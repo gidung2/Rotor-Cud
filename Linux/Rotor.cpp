@@ -21,6 +21,10 @@
 #endif
 
 using namespace std;
+void initGpuWork() {
+    setvbuf(stdout, NULL, _IONBF, 0);
+    // 이후부터는 printf가 즉시 화면에 반영됨
+}
 
 Point Gn[CPU_GRP_SIZE / 2];
 Point _2Gn;
@@ -1788,7 +1792,6 @@ printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
     (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
     formatThousands(count).c_str()
 );
-fflush(stdout);
 
 								}
 								else {
@@ -1802,7 +1805,6 @@ printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
     (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
     formatThousands(count).c_str()
 );
-fflush(stdout);
 
 								}
 							}
@@ -1919,7 +1921,6 @@ printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
     (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
     formatThousands(count).c_str()
 );
-fflush(stdout);
 
 									}
 									else {
@@ -1933,7 +1934,6 @@ printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
     (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
     formatThousands(count).c_str()
 );
-fflush(stdout);
 
 									}
 								}
