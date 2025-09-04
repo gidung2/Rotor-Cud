@@ -20,11 +20,13 @@
 #include <pthread.h>
 #endif
 
+#include <iostream>
+#include <cstdio>
+#include <cstring>
 using namespace std;
-void initGpuWork() {
-    setvbuf(stdout, NULL, _IONBF, 0);
-    // 이후부터는 printf가 즉시 화면에 반영됨
-}
+
+int main() {
+    setvbuf(stdout, NULL, _IONBF, 0); // 버퍼링 해제 (한 번만)
 
 Point Gn[CPU_GRP_SIZE / 2];
 Point _2Gn;
@@ -1782,29 +1784,35 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 							if (isAlive(params)) {
 
 								if (avgGpuKeyRate > 1000000000) {
-									memset(timeStr, '\0', 256);
-printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
-    toTimeStr(t1, timeStr),
-    rKeyCount,
-    rhex.GetBase16().c_str(),
-    nbFoundKey,
-    (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
-    (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
-    formatThousands(count).c_str()
-);
+									memset(timeStr, '\0', sizeof(timeStr));
+    printf("\033[2K\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
+        toTimeStr(t1, timeStr),
+        rKeyCount,
+        rhex.GetBase16().c_str(),
+        nbFoundKey,
+        (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
+        (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
+        formatThousands(count).c_str()
+    );
+
+    return 0;
+}
 
 								}
 								else {
-									memset(timeStr, '\0', 256);
-printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
-    toTimeStr(t1, timeStr),
-    rKeyCount,
-    rhex.GetBase16().c_str(),
-    nbFoundKey,
-    (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
-    (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
-    formatThousands(count).c_str()
-);
+									memset(timeStr, '\0', sizeof(timeStr));
+    printf("\033[2K\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
+        toTimeStr(t1, timeStr),
+        rKeyCount,
+        rhex.GetBase16().c_str(),
+        nbFoundKey,
+        (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
+        (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
+        formatThousands(count).c_str()
+    );
+
+    return 0;
+}
 
 								}
 							}
@@ -1911,29 +1919,35 @@ printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
 								if (isAlive(params)) {
 
 									if (avgGpuKeyRate > 1000000000) {
-										memset(timeStr, '\0', 256);
-printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
-    toTimeStr(t1, timeStr),
-    rKeyCount,
-    rhex.GetBase16().c_str(),
-    nbFoundKey,
-    (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
-    (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
-    formatThousands(count).c_str()
-);
+										memset(timeStr, '\0', sizeof(timeStr));
+    printf("\033[2K\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
+        toTimeStr(t1, timeStr),
+        rKeyCount,
+        rhex.GetBase16().c_str(),
+        nbFoundKey,
+        (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
+        (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
+        formatThousands(count).c_str()
+    );
+
+    return 0;
+}
 
 									}
 									else {
-										memset(timeStr, '\0', 256);
-printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
-    toTimeStr(t1, timeStr),
-    rKeyCount,
-    rhex.GetBase16().c_str(),
-    nbFoundKey,
-    (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
-    (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
-    formatThousands(count).c_str()
-);
+										memset(timeStr, '\0', sizeof(timeStr));
+    printf("\033[2K\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f %s] [T: %s]      ",
+        toTimeStr(t1, timeStr),
+        rKeyCount,
+        rhex.GetBase16().c_str(),
+        nbFoundKey,
+        (avgGpuKeyRate > 1000000000) ? avgGpuKeyRate / 1000000000.0 : avgGpuKeyRate / 1000000.0,
+        (avgGpuKeyRate > 1000000000) ? "Gk/s" : "Mk/s",
+        formatThousands(count).c_str()
+    );
+
+    return 0;
+}
 
 									}
 								}
